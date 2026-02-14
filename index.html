@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gibran 💖 Nadira Imutt</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --pink:#ff6b9e;
+}
+
+body{
+  margin:0;
+  font-family:'Fredoka',sans-serif;
+  background:linear-gradient(180deg,#fff0f5,#ffdce8);
+  min-height:100vh;
+  overflow-x:hidden;
+  overflow-y:auto;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px 10px 60px 10px;
+}
+
+.container{
+  width:100%;
+  max-width:400px;
+}
+
+.card{
+  background:white;
+  border-radius:25px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.title{
+  font-family:'Pacifico';
+  color:var(--pink);
+  font-size:26px;
+}
+
+.names{
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.emoji{
+  font-size:70px;
+}
+
+.counter{
+  margin:10px 0;
+  color:var(--pink);
+  font-weight:600;
+}
+
+button{
+  width:140px;
+  padding:12px;
+  border:none;
+  border-radius:15px;
+  font-size:16px;
+  margin:5px;
+}
+
+.yes{
+  background:var(--pink);
+  color:white;
+}
+
+.no{
+  background:#eee;
+  position:relative;
+}
+
+/* VIDEO */
+
+video{
+  width:100%;
+  border-radius:20px;
+  margin-top:20px;
+  border:4px solid var(--pink);
+  box-shadow:0 0 15px rgba(255,107,158,0.6),
+             0 0 30px rgba(255,107,158,0.4);
+  display:none;
+}
+
+video.show{
+  display:block;
+  animation:pop 0.5s ease, wiggle 1s infinite alternate;
+}
+
+@keyframes pop{
+  from{transform:scale(0.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+@keyframes wiggle{
+  from{transform:rotate(-2deg);}
+  to{transform:rotate(2deg);}
+}
+
+/* DATE INVITE */
+
+.date-invite{
+  margin-top:20px;
+  display:none;
+}
+
+.date-invite.show{
+  display:block;
+  animation:fadeUp 1s ease;
+}
+
+.date-btn{
+  background:linear-gradient(45deg,#ff6b9e,#ff2e7a);
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:20px;
+  font-size:16px;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* PESAWAT */
+
+.airplane{
+  position:fixed;
+  top:15%;
+  left:-400px;
+  font-size:35px;
+  display:flex;
+  align-items:center;
+  z-index:998;
+}
+
+.airplane.show{
+  animation:fly 15s linear infinite;
+}
+
+.airplane-banner{
+  background:white;
+  padding:6px 15px;
+  border-radius:20px;
+  margin-left:10px;
+  border:2px solid var(--pink);
+}
+
+@keyframes fly{
+  0%{ transform:translateX(-400px);}
+  100%{ transform:translateX(140vw);}
+}
+
+/* MOTOR */
+
+.motor-container{
+  position:fixed;
+  bottom:60px;
+  left:-400px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.motor{
+  font-size:55px;
+}
+
+.motor-text{
+  background:linear-gradient(45deg,#ff6b9e,#ff2e7a);
+  color:white;
+  padding:12px 20px;
+  border-radius:20px;
+  opacity:0;
+}
+
+.motor-container.show{
+  animation:motorDrive 2s ease forwards;
+}
+
+@keyframes motorDrive{
+  0%{ left:-400px;}
+  100%{ left:50%; transform:translateX(-50%);}
+}
+
+.motor-container.show .motor-text{
+  animation:textAppear 1s ease forwards;
+  animation-delay:1.5s;
+}
+
+@keyframes textAppear{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* ASAP */
+
+.smoke{
+  position:absolute;
+  left:-20px;
+  bottom:10px;
+}
+
+.smoke span{
+  position:absolute;
+  font-size:20px;
+  animation:smokeUp 2s linear infinite;
+}
+
+@keyframes smokeUp{
+  from{transform:translate(0,0);opacity:1;}
+  to{transform:translate(-50px,-50px);opacity:0;}
+}
+
+/* CINEMATIC TEXT */
+
+.cinematic-text{
+  position:fixed;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:32px;
+  font-family:'Pacifico';
+  color:#ff2e7a;
+  opacity:0;
+}
+
+.cinematic-text.show{
+  animation:cinematic 3s ease forwards;
+}
+
+@keyframes cinematic{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(0.5);}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.2);}
+  100%{opacity:0;}
+}
+
+/* BEAR */
+
+.bear{
+  position:fixed;
+  bottom:-100px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:60px;
+}
+
+.bear.show{
+  animation:bearJump 2s ease forwards;
+}
+
+@keyframes bearJump{
+  0%{bottom:-100px;}
+  50%{bottom:200px;}
+  100%{bottom:-100px;}
+}
+
+</style>
+</head>
+<body>
+
+<div class="airplane" id="plane">
+✈️
+<div class="airplane-banner">I Love You So Much 💕</div>
+</div>
+
+<div class="container">
+<div class="card">
+
+<div class="emoji" id="emoji">🐻</div>
+
+<div class="title">Happy 1 Minggu 💖</div>
+
+<div class="names">Gibran 💕 Nadira Imutt</div>
+
+<div>Bersama sejak 05 Februari 2026 💕</div>
+
+<div class="counter" id="counter"></div>
+
+<button class="yes" onclick="playVideo()">Masih Mau 💖</button>
+<button class="no" onclick="moveNo(this)">Tidak 😝</button>
+
+<video id="video" playsinline>
+<source src="VIDEO-KAMU.mp4" type="video/mp4">
+</video>
+
+<div class="date-invite" id="dateInvite">
+
+<div>Mau date bareng aku lagi nggak? 🥺💖</div>
+
+<button class="date-btn" onclick="openDate()">
+Lihat tempat date kita 📍
+</button>
+
+</div>
+
+</div>
+</div>
+
+<div class="cinematic-text" id="loveText">
+I Love You Nadira 💖
+</div>
+
+<div class="bear" id="bear">🐻</div>
+
+<div class="motor-container" id="motorContainer">
+
+<div class="smoke" id="smoke"></div>
+
+<div class="motor">🏍️</div>
+
+<div class="motor-text">
+Aku jemput jam 18:00 ya cantik 😘
+</div>
+
+</div>
+
+<script>
+
+/* COUNTER */
+
+const startDate = new Date("2026-02-05");
+
+function updateCounter(){
+
+const now=new Date();
+const diff=now-startDate;
+
+const d=Math.floor(diff/86400000);
+const h=Math.floor(diff/3600000)%24;
+const m=Math.floor(diff/60000)%60;
+
+counter.innerHTML=d+" hari "+h+" jam "+m+" menit bersama 💕";
+
+}
+
+setInterval(updateCounter,1000);
+
+/* VIDEO PLAY */
+
+function playVideo(){
+
+video.classList.add("show");
+video.play();
+
+emoji.innerHTML="🥰";
+
+loveText.classList.add("show");
+bear.classList.add("show");
+plane.classList.add("show");
+
+dateInvite.classList.add("show");
+
+/* hujan */
+
+for(let i=0;i<25;i++){
+
+setTimeout(()=>{
+
+let drop=document.createElement("div");
+drop.innerHTML=Math.random()>0.5?"💖":"🌹";
+
+drop.style.position="fixed";
+drop.style.left=Math.random()*100+"vw";
+drop.style.top="-20px";
+drop.style.fontSize="30px";
+
+drop.animate([
+{transform:"translateY(0)"},
+{transform:"translateY(100vh)"}
+],{duration:3000});
+
+document.body.appendChild(drop);
+
+setTimeout(()=>drop.remove(),3000);
+
+},i*120);
+
+}
+
+}
+
+/* tombol tidak */
+
+function moveNo(btn){
+
+btn.style.position="absolute";
+btn.style.left=Math.random()*200+"px";
+btn.style.top=Math.random()*300+"px";
+
+emoji.innerHTML="🥺";
+
+}
+
+/* suara motor */
+
+function playEngineSound(){
+
+const ctx=new(window.AudioContext||window.webkitAudioContext)();
+
+const osc=ctx.createOscillator();
+const gain=ctx.createGain();
+
+osc.type="sawtooth";
+
+osc.frequency.setValueAtTime(120,ctx.currentTime);
+osc.frequency.exponentialRampToValueAtTime(60,ctx.currentTime+0.5);
+osc.frequency.exponentialRampToValueAtTime(100,ctx.currentTime+1);
+
+gain.gain.setValueAtTime(0.2,ctx.currentTime);
+gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+2);
+
+osc.connect(gain);
+gain.connect(ctx.destination);
+
+osc.start();
+osc.stop(ctx.currentTime+2);
+
+}
+
+/* open date */
+
+function openDate(){
+
+motorContainer.classList.add("show");
+
+playEngineSound();
+
+/* asap */
+
+smoke.innerHTML="";
+
+for(let i=0;i<6;i++){
+
+let puff=document.createElement("span");
+puff.innerHTML="💨";
+puff.style.animationDelay=i*0.3+"s";
+
+smoke.appendChild(puff);
+
+}
+
+setTimeout(()=>{
+window.open("https://share.google/4y2ZEfq0UBm7uc8Jc","_blank");
+},2500);
+
+}
+
+</script>
+
+</body>
+</html>
